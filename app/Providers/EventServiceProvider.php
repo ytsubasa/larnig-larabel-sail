@@ -1,7 +1,5 @@
-
-
 protected $listen = [
-    Registered::class => [
-        'App\Listeners\RegisteredListener',
-        ],
-    ];
+    \Illuminate\Auth\Events\Registered::class => [
+        \App\Listeners\RegisteredListener::class,
+    ],
+];
