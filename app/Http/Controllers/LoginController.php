@@ -15,7 +15,7 @@ declare(strict_types=1);
         return view('auth.login');
     }
 
-    public function autheenticaate(Request $resquest)
+    public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
