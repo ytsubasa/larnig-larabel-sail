@@ -85,3 +85,76 @@ class BookService
         }
     }
 }
+
+
+
+
+/*アクションパターン*/
+
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+final class UserIndexAction extends Controller{
+
+    pricate $domain;
+    $private $userResponder;
+
+    public function __construct(
+        UseService $useService,
+        UseResponder $userResponder
+    ) {
+        $this->domain = $usersService;
+        $this->usrResponder = $userResponder;
+
+    }
+
+    public function __invoke(Request $request)
+    {
+        return $this->usrResponder->response(
+            return $this->userResponder->response(
+                $$thi->domain->retrieveUser($request->ge('id'))
+            );
+        )
+    }
+}
+
+
+/* レスポンダー */
+
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Responder;
+
+use App\Models\User;
+use GuzzleHttp\Psr7\Response;
+
+class BookResponder 
+{
+    protected $response;
+    protected $view;
+
+    public function __construct(Response $response, ViewFactory $view)
+    {
+        $this->response = $response;
+        $this->view = $view;
+    }
+
+    public function response(UserModel $user): Response
+    {
+
+        if (!$user) {
+            $thi->response->seStatusCode(Response::HTTP_NOT_FOUND);
+        }
+        $this->response->setContent(
+            $this->view->make('user,index', ['user' => $user])
+        );
+        return $this->response;
+
+    }
+    
+}
