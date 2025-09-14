@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use App\Http\Requests\RegisterUserRequest;
+use App\Events\UserRegistered;
 
 class RegisterController extends Controller
 {
@@ -32,7 +33,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        event(new UserRegistered($user));
 
          return view('regist.complete', compact('user'));
 

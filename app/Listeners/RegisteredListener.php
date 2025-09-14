@@ -8,6 +8,7 @@ use IlluminateAuthEventsRegistered;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
+
 class RegisteredListener
 {
     private $mailer;

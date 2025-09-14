@@ -7,6 +7,7 @@ declare(strict_types=1);
  use App\Providers\RouteServiceProvider;
  use Illuminate\Http\Request;
  use Illuminate\Support\Facades\Auth;
+ use App\Http\Requests\LoginUserRequest;
 
  class LoginController extends Controller
  {
@@ -15,9 +16,9 @@ declare(strict_types=1);
         return view('auth.login');
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(LoginUserRequest $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->credentials();
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
