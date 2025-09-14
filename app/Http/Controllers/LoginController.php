@@ -22,6 +22,8 @@ declare(strict_types=1);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
+
+
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 

@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        \App\Models\Publisher::factory(50)->create();
         // $this->call(AuthorsTableSeedeer::class);
 
         // User::factory()->create([
@@ -20,6 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\Publisher::factory(50)->create();
+        
     }
 }
