@@ -6,6 +6,7 @@ namespace App\Providers;
 use Illuminate\Encryption\MissingAppKeyException;
 use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
+use Knp\Snappy\Pdf;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,10 +16,17 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
 
-        $this->app->bind(
-            PublisherRepositoryInterface::class,
-            PublisherRepository::class
-        );
+
+        $this->app->bind(Pdf::class, function () {
+            return new Pdf('/user/bin/wkhtmltopdf');
+        });
+
+
+
+        // $this->app->bind(
+        //     PublisherRepositoryInterface::class,
+        //     PublisherRepository::class
+        // );
  
     }
 
