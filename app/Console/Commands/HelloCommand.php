@@ -19,7 +19,7 @@ class HelloCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'hello:class {name}';
+    protected $signature = 'hello:class {--switch}';
 
     /**
      * The console command description.
@@ -27,6 +27,19 @@ class HelloCommand extends Command
      * @var string
      */
     protected $description = 'サンプルコマンド（クラス）';
+
+
+
+//  public function handle(): int
+//    {
+  
+//     $switch = $this->option('switch');
+//     $this->comment('Hello' . ($switch ? 'ON' : 'OFF'));
+//     return 0;
+//    }
+
+
+
 
     /**
      * Execute the console command.
@@ -54,6 +67,8 @@ class HelloCommand extends Command
     $this->line('<fg=red>赤文字の line 出力</>');
 
      $this->newLine(1); // 改行
+
+     $this->question('これはクエスチョンです');
 
     // --- テーブル出力 ---
     $this->table(
